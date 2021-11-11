@@ -167,14 +167,14 @@ export class AppComponent implements OnInit {
 
 
   makeAPIcall(codeResult) {
-    this.http.post('http://20.204.68.132:8090/users/validate', { "userid": codeResult }).subscribe((response: any) => {
+    this.http.post('https://20.204.68.132:8090/users/validate', { "userid": codeResult }).subscribe((response: any) => {
       console.log("response from api ", response);
       console.log(response.result.res)
       if (response.result.res == "true" || response.result.res == true) {
         //HAVE TO CHECK IN THE USER HERE
         //AND THEN SHOW WELCOME PAGE
         console.log("started")
-        this.http.post('http://20.204.68.132:8090/users/checkin', { "userid": codeResult }).subscribe((responseCheckin: any) => {
+        this.http.post('https://20.204.68.132:8090/users/checkin', { "userid": codeResult }).subscribe((responseCheckin: any) => {
           console.log("response from api ", responseCheckin)
           if (responseCheckin.result.res == "true" || responseCheckin.result.res ==true)
             this.callValidInvalidAPI("valid")
