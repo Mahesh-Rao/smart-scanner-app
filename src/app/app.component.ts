@@ -167,17 +167,19 @@ export class AppComponent implements OnInit {
 
 
   makeAPIcall(codeResult) {
-    this.http.post('https://20.204.68.132:8090/users/validate', { "userid": codeResult }).subscribe((response: any) => {
+    this.http.post('https://20.204.68.132:8090/users/validate', { "userid": codeResult }).subscribe(async(response: any) => {
       console.log("response from api ", response);
       console.log(response.result.res)
       if (response.result.res == "true" || response.result.res == true) {
         //HAVE TO CHECK IN THE USER HERE
         //AND THEN SHOW WELCOME PAGE
         console.log("started")
-        this.http.post('https://20.204.68.132:8090/users/checkin', { "userid": codeResult }).subscribe((responseCheckin: any) => {
+      this.http.post('https://20.204.68.132:8090/users/checkin', { "userid": codeResult }).subscribe(async(responseCheckin: any) => {
           console.log("response from api ", responseCheckin)
-          if (responseCheckin.result.res == "true" || responseCheckin.result.res ==true)
+          if (responseCheckin.result.res == "true" || responseCheckin.result.res ==true){
+            this.sendDataToAzure(codeResult)
             this.callValidInvalidAPI("valid")
+          }
           else {
             // throw exception //NEEDS TO BE DISCUSSED.
             this.topText = "Server Error! Try Again"
@@ -199,6 +201,15 @@ export class AppComponent implements OnInit {
 
   }
 
-
+   sendDataToAzure(userid){
+     return new Promise((resolve,reject)=>{
+    var date =  Date.now()
+    console.log(date)
+    this.http.post('https://20.204.68.132:8090/users/sendqrtoqueue', { "userid": userid,"timestamp":date }).subscribe((responseCheckin: any) => {
+      console.log("response from api ", responseCheckin) 
+      resolve(true);
+    })
+  })
+   }
 
 }
