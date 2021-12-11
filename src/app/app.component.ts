@@ -202,8 +202,8 @@ export class AppComponent implements OnInit {
     return new Promise((resolve, reject) => {
       var date = Date.now()
       console.log(date)
-      this.http.post('http://20.204.68.132:4321/addData', { "userid": userid, "timestamp": date }).subscribe((responseCheckin: any) => {
-        console.log("response from api ", responseCheckin)
+      this.http.post('https://20.204.68.132:8090/users/addQREntryData', { "userid": userid, "timestamp": date }).subscribe((responseCheckin: any) => {
+        console.log("response from api", responseCheckin)
         resolve(true);
       })
     })
