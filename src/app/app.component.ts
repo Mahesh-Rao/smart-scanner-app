@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.titleService.setTitle("Entry Smart Shop");
-    console.log("Enter to Smart shop")
+    console.log("Enter to Smart shop.")
     this.goTo = true;
     this.deviceInfo = this.deviceDetector.getDeviceInfo();
     const isMobile = this.deviceDetector.isMobile();
