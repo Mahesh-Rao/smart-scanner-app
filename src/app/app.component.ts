@@ -57,8 +57,8 @@ export class AppComponent implements OnInit {
       this.canvasH = "480";
     }
     else if (isTablet == true) {
-      this.canvasW = "1080";
-      this.canvasH = "720"
+      this.canvasW = "520";
+      this.canvasH = "640"
 
     } else {
       this.canvasW = "1080";
