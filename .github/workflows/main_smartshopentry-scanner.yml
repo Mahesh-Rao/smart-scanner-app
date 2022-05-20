@@ -53,4 +53,4 @@ jobs:
           app-name: 'smartshopentry-scanner'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CB810C8E05A3404080539BB25EFF9347 }}
-          package: .
+          package: ./dist/ScannerApp
