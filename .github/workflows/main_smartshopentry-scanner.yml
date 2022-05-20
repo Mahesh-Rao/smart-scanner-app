@@ -19,14 +19,12 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '12.x'
 
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
-
+          npm run build --if-present 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -50,6 +48,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
+         
           app-name: 'smartshopentry-scanner'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CB810C8E05A3404080539BB25EFF9347 }}
