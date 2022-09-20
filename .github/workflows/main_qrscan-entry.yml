@@ -53,4 +53,4 @@ jobs:
           app-name: 'qrscan-entry'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AD02041A8C034DB08F8496EB17DFEE4D }}
-          package: .
+          package: ./dist/ScannerApp
